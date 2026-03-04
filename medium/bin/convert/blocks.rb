@@ -18,7 +18,13 @@ class Blocks
     html.css('.graf').each_with_index do |child, index|
       case child.name
       when 'h3'
-        # Nothing, title
+        classes = child.attributes['class'].to_s
+        if classes.include?('graf--title')
+          # Nothing, title
+        else
+          flush_chapter
+          add_title child.text
+        end
       when 'h4'
         flush_chapter
         add_title child.text
@@ -142,15 +148,17 @@ class Blocks
   end
 
   def add_testimonial(text)
+    html = text.gsub('<blockquote', '<p')
+               .gsub('</blockquote', '</p')
     @blocks << {
       template_kind: 'testimonials',
       migration_identifier: "#{migration_identifier}-testimonial-#{@testimonial_index}",
       position: position,
       data: {
         layout: 'carousel',
-        testimonials: [
+        elements: [
           {
-            text: text
+            text: html
           }
         ]
       }
