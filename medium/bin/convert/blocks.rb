@@ -98,14 +98,18 @@ class Blocks
     image = child.css('.graf-image').first
     return if image.nil?
     url = image['src']
-    id = Media.for(url)
+    media = Media.new(url)
     credit = "<p>#{child.css('figcaption').text}</p>"
     @blocks << {
       template_kind: 'image',
       migration_identifier: "#{migration_identifier}-image-#{@image_index}",
       position: position,
       data: {
-        id: id,
+        image: {
+          id: media.id,
+          filename: media.filename,
+          signed_id: media.signed_id
+        },
         credit: credit
       }
     }

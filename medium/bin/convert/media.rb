@@ -1,20 +1,20 @@
 class Media
   FILE = './converted/medias.json'
 
-  attr_reader :url, :id
-
-  def self.for(url)
-    new(url).to_s
-  end
+  attr_reader :url, :id, :filename, :signed_id
 
   def initialize(url)
     @url = url
     clean_url
+    find_in_file || create
   end
 
-  def to_s
-    find_in_file || create
-    id
+  def to_hash
+    {
+      id: id,
+      filename: filename,
+      signed_id: signed_id
+    }
   end
 
   protected
@@ -25,7 +25,10 @@ class Media
 
   def find_in_file
     return false unless data.has_key?(url)
-    @id = data[url]
+    media = data[url]
+    @id = media['id']
+    @filename = media['filename']
+    @signed_id = media['signed_id']
     puts "Id: #{id} found in file for #{url}"
     true
   end
@@ -47,11 +50,14 @@ class Media
     }
     sleep 5
     response_body, response_code, response_headers = api.call_api('POST', '/communication/medias', data)
-    @id = response_body[:id]
+    blob = response_body[:original_blob]
+    @id = blob[:id]
+    @filename = blob[:filename]
+    @signed_id = blob[:signed_id]
   end
 
   def save_to_file
-    data[url] = id
+    data[url] = to_hash
     File.write(FILE, data.to_json)
   end
 
