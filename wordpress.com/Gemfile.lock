@@ -1,22 +1,23 @@
 GEM
   remote: https://rubygems.org/
   specs:
-    actionpack (7.1.1)
-      actionview (= 7.1.1)
-      activesupport (= 7.1.1)
+    actionpack (7.1.3.1)
+      actionview (= 7.1.3.1)
+      activesupport (= 7.1.3.1)
       nokogiri (>= 1.8.5)
+      racc
       rack (>= 2.2.4)
       rack-session (>= 1.0.1)
       rack-test (>= 0.6.3)
       rails-dom-testing (~> 2.2)
       rails-html-sanitizer (~> 1.6)
-    actionview (7.1.1)
-      activesupport (= 7.1.1)
+    actionview (7.1.3.1)
+      activesupport (= 7.1.3.1)
       builder (~> 3.1)
       erubi (~> 1.11)
       rails-dom-testing (~> 2.2)
       rails-html-sanitizer (~> 1.6)
-    activesupport (7.1.1)
+    activesupport (7.1.3.1)
       base64
       bigdecimal
       concurrent-ruby (~> 1.0, >= 1.0.2)
@@ -26,18 +27,17 @@ GEM
       minitest (>= 5.1)
       mutex_m
       tzinfo (~> 2.0)
-    base64 (0.1.1)
-    bigdecimal (3.1.4)
+    base64 (0.2.0)
+    bigdecimal (3.1.6)
     builder (3.2.4)
     byebug (11.1.3)
-    concurrent-ruby (1.2.2)
+    concurrent-ruby (1.2.3)
     connection_pool (2.4.1)
     crass (1.0.6)
     domain_name (0.5.20190701)
       unf (>= 0.0.5, < 1.0.0)
     dotenv (2.8.1)
-    drb (2.1.1)
-      ruby2_keywords
+    drb (2.2.1)
     erubi (1.12.0)
     http-accept (1.7.0)
     http-cookie (1.0.5)
@@ -47,23 +47,25 @@ GEM
       multi_xml (>= 0.5.2)
     i18n (1.14.1)
       concurrent-ruby (~> 1.0)
-    loofah (2.21.4)
+    loofah (2.22.0)
       crass (~> 1.0.2)
       nokogiri (>= 1.12.0)
     mime-types (3.5.1)
       mime-types-data (~> 3.2015)
     mime-types-data (3.2023.1003)
     mini_mime (1.1.5)
-    minitest (5.20.0)
+    minitest (5.22.2)
     multi_xml (0.6.0)
-    mutex_m (0.1.2)
+    mutex_m (0.2.0)
     netrc (0.11.0)
-    nokogiri (1.15.4-x86_64-darwin)
+    nokogiri (1.16.2-x86_64-darwin)
+      racc (~> 1.4)
+    nokogiri (1.16.2-x86_64-linux)
       racc (~> 1.4)
     osuny_api (0.2.5)
       httparty
-    racc (1.7.1)
-    rack (3.0.8)
+    racc (1.7.3)
+    rack (3.0.9.1)
     rack-session (2.0.0)
       rack (>= 3.0.0)
     rack-test (2.1.0)
@@ -80,7 +82,6 @@ GEM
       http-cookie (>= 1.0.2, < 2.0)
       mime-types (>= 1.16, < 4.0)
       netrc (~> 0.8)
-    ruby2_keywords (0.0.5)
     sanitize (6.1.0)
       crass (~> 1.0.2)
       nokogiri (>= 1.12.0)
@@ -92,6 +93,7 @@ GEM
 
 PLATFORMS
   x86_64-darwin-22
+  x86_64-linux
 
 DEPENDENCIES
   actionpack
