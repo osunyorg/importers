@@ -58,11 +58,13 @@ GEM
     multi_xml (0.6.0)
     mutex_m (0.1.2)
     netrc (0.11.0)
-    nokogiri (1.15.4-x86_64-darwin)
+    nokogiri (1.16.3-x86_64-darwin)
+      racc (~> 1.4)
+    nokogiri (1.16.3-x86_64-linux)
       racc (~> 1.4)
     osuny_api (0.2.5)
       httparty
-    racc (1.7.1)
+    racc (1.7.3)
     rack (3.0.8)
     rack-session (2.0.0)
       rack (>= 3.0.0)
@@ -92,6 +94,7 @@ GEM
 
 PLATFORMS
   x86_64-darwin-22
+  x86_64-linux
 
 DEPENDENCIES
   actionpack
